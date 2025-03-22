@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academia</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo"><img src="img/ap.png" alt="Logo"></div>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="sobremi.html">Sobre Mí</a>
+            <a href="proyectos.html">Proyectos</a>
+            <a href="academia.html">Academia</a>
+        </nav>
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Buscar...">
+            <button onclick="search()">Buscar</button>
+            <div class="search-results" id="searchResults"></div>
+        </div>
+        <div class="icons">
+            <img src="img/confi.png" alt="Configuración" onclick="toggleConfig()">
+            <img src="img/noti.png" alt="Notificaciones" onclick="toggleNotif()">
+            <img src="img/perf.png" alt="Perfil" onclick="toggleProfile()">
+        </div>
+    </header>
+
+    <main>
+        <section class="contact">
+            <h2>Academia</h2>
+            <p>Mis logros académicos incluyen haberme graduado como Bachiller Técnico en Análisis y Desarrollo de Software, un título que representa no solo años de dedicación y esfuerzo, sino también la adquisición de habilidades técnicas y conocimientos especializados en el campo de la tecnología. Durante mi formación, me enfoqué en dominar herramientas y metodologías clave para el diseño, desarrollo e implementación de soluciones de software, así como en fortalecer mi capacidad para resolver problemas de manera eficiente y creativa. Este logro no solo marca un hito en mi trayectoria educativa, sino que también sienta las bases para mi crecimiento profesional en el dinámico y siempre evolutivo mundo de la programación y el desarrollo tecnológico.</p>
+            <br>
+            <h2>Mi diploma</h2>
+            <div class="image-container">
+                <a href="img/CamScanner 17-03-2025 21.09[1].png" target="_blank">
+                    <img src="img/CamScanner 17-03-2025 21.09[1].png" alt="Imagen de Contacto" class="clickable-image" width="100px">
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Mi Sitio Web. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        function toggleConfig() {
+            alert("Configuración");
+        }
+        function toggleNotif() {
+            alert("Notificaciones");
+        }
+        function toggleProfile() {
+            alert("Perfil");
+        }
+
+        function search() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const results = document.getElementById('searchResults');
+            results.innerHTML = '';
+
+            const pages = [
+                { name: 'Inicio', url: 'index.html' },
+                { name: 'Sobre Mí', url: 'sobremi.html' },
+                { name: 'Proyectos', url: 'proyectos.html' },
+                { name: 'Academia', url: 'academia.html' }
+            ];
+
+            const filteredPages = pages.filter(page => page.name.toLowerCase().includes(searchTerm));
+
+            if (filteredPages.length > 0) {
+                filteredPages.forEach(page => {
+                    const link = document.createElement('a');
+                    link.href = page.url;
+                    link.textContent = page.name;
+                    results.appendChild(link);
+                });
+                results.style.display = 'block';
+            } else {
+                results.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

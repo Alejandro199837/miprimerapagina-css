@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyectos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo"><img src="img/ap.png" alt="Logo"></div>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="sobremi.html">Sobre Mí</a>
+            <a href="proyectos.html">Proyectos</a>
+            <a href="academia.html">Academia</a>
+        </nav>
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Buscar...">
+            <button onclick="search()">Buscar</button>
+            <div class="search-results" id="searchResults"></div>
+        </div>
+        <div class="icons">
+            <img src="img/confi.png" alt="Configuración" onclick="toggleConfig()">
+            <img src="img/noti.png" alt="Notificaciones" onclick="toggleNotif()">
+            <img src="img/perf.png" alt="Perfil" onclick="toggleProfile()">
+        </div>
+    </header>
+
+    <main>
+        <section class="portfolio">
+            <h2>Proyectos</h2>
+            <div class="grid-container">
+                <div class="item">Por el momento no tengo proyectos realizados pero a futuro está graduarme del Sena con mi título profesional, trabajar y crear mi propia empresa de desarrollo de software, tener muy buena estabilidad económica y trabajar mucho para seguir creciendo tanto como persona como en mi vida profesional.</div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Mi Sitio Web. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        function toggleConfig() {
+            alert("Configuración");
+        }
+        function toggleNotif() {
+            alert("Notificaciones");
+        }
+        function toggleProfile() {
+            alert("Perfil");
+        }
+
+        function search() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const results = document.getElementById('searchResults');
+            results.innerHTML = '';
+
+            const pages = [
+                { name: 'Inicio', url: 'index.html' },
+                { name: 'Sobre Mí', url: 'sobremi.html' },
+                { name: 'Proyectos', url: 'proyectos.html' },
+                { name: 'Academia', url: 'academia.html' }
+            ];
+
+            const filteredPages = pages.filter(page => page.name.toLowerCase().includes(searchTerm));
+
+            if (filteredPages.length > 0) {
+                filteredPages.forEach(page => {
+                    const link = document.createElement('a');
+                    link.href = page.url;
+                    link.textContent = page.name;
+                    results.appendChild(link);
+                });
+                results.style.display = 'block';
+            } else {
+                results.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
